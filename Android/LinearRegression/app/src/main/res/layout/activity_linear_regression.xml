@@ -6,4 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".LinearRegressionActivity">
 
+
+    <EditText
+        android:id="@+id/et_x_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="100dp"
+        android:gravity="center"
+        android:hint="X input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="getResult"
+        android:text="Predict Y"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_x_input" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
