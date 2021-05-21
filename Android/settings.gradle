@@ -1,0 +1,2 @@
+include ':ImageClassification', 'LinearRegression'
+rootProject.name = 'Tensorflow'
