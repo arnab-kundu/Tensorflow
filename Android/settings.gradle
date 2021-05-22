@@ -1,2 +1,2 @@
-include ':ImageClassification', 'LinearRegression'
+include ':ImageClassification', 'LinearRegression', 'LogisticRegression'
 rootProject.name = 'Tensorflow'

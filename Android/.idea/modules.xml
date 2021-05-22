@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tensorflow.iml" filepath="$PROJECT_DIR$/.idea/modules/Tensorflow.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ImageClassification/Tensorflow.ImageClassification.iml" filepath="$PROJECT_DIR$/.idea/modules/ImageClassification/Tensorflow.ImageClassification.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/LinearRegression/Tensorflow.LinearRegression.iml" filepath="$PROJECT_DIR$/.idea/modules/LinearRegression/Tensorflow.LinearRegression.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LogisticRegression/Tensorflow.LogisticRegression.iml" filepath="$PROJECT_DIR$/.idea/modules/LogisticRegression/Tensorflow.LogisticRegression.iml" />
     </modules>
   </component>
 </project>
