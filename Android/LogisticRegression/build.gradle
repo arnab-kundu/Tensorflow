@@ -6,6 +6,7 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+    ndkVersion '21.0.6113669'
 
     defaultConfig {
         applicationId "com.example.logisticregression"
@@ -33,6 +34,9 @@ android {
     buildFeatures {
         mlModelBinding true
     }
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -47,6 +51,7 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite-support:0.1.0-rc1'
     implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0-rc1'
     implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
 
     // Test
     testImplementation 'junit:junit:4.+'

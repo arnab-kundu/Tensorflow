@@ -1,12 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.10" // Change this version number according to Kotlin version installed in system to fix error or warnings
+    ext.kotlin_version = "1.5.0" // Change this version number according to Kotlin version installed in system to fix error or warnings
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.2" // Change this version number according to Android studio version to fix error or warnings
+        classpath "com.android.tools.build:gradle:4.2.1" // Change this version number according to Android studio version to fix error or warnings
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong

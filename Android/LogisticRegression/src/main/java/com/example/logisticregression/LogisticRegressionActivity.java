@@ -3,9 +3,12 @@ package com.example.logisticregression;
 import android.content.res.AssetFileDescriptor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.logisticregression.databinding.ActivityLogisticRegressionBinding;
 
 import org.tensorflow.lite.Interpreter;
 
@@ -24,11 +27,14 @@ public class LogisticRegressionActivity extends AppCompatActivity {
 
     private static final String TAG = "asd";
     private Interpreter tflite;
+    private ActivityLogisticRegressionBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_logistic_regression);
+        //setContentView(R.layout.activity_logistic_regression);
+        binding = ActivityLogisticRegressionBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         try {
             tflite = new Interpreter(loadModelFile());
@@ -71,7 +77,16 @@ public class LogisticRegressionActivity extends AppCompatActivity {
      *
      * @return confidence
      */
-    private float doInference() {
+    private float doInference(
+            float pregnant,
+            float glucose,
+            float blood_pressure,
+            float skin_thickness,
+            float insulin,
+            float bmi,
+            float diabetes_pedigree_function,
+            float age) {
+
         float[] inputVal = new float[8];
         /*inputVal[0] = 6.0F;
         inputVal[1] = 148.0F;
@@ -91,14 +106,24 @@ public class LogisticRegressionActivity extends AppCompatActivity {
         inputVal[6] = 0.351F;
         inputVal[7] = 31.0F;*/
 
-        inputVal[0] = 8.0F;
+        /*inputVal[0] = 8.0F;
         inputVal[1] = 183.0F;
         inputVal[2] = 64.0F;
         inputVal[3] = 0.0F;
         inputVal[4] = 0.0F;
         inputVal[5] = 23.3F;
         inputVal[6] = 0.672F;
-        inputVal[7] = 32.0F;
+        inputVal[7] = 32.0F;*/
+
+
+        inputVal[0] = pregnant;
+        inputVal[1] = glucose;
+        inputVal[2] = blood_pressure;
+        inputVal[3] = skin_thickness;
+        inputVal[4] = insulin;
+        inputVal[5] = bmi;
+        inputVal[6] = diabetes_pedigree_function;
+        inputVal[7] = age;
 
         float[][] output = new float[1][1];
         tflite.run(inputVal, output);
@@ -107,10 +132,30 @@ public class LogisticRegressionActivity extends AppCompatActivity {
 
     public void getResult() {
         Log.d(TAG, "getResult: ");
-        Toast.makeText(this, "Confidence: " + roundOfTwoDecimal(doInference()) + "%", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Confidence: " + roundOfTwoDecimal(doInference()) + "%", Toast.LENGTH_SHORT).show();
     }
 
     private double roundOfTwoDecimal(double decimalNumber) {
         return Math.round(decimalNumber * 100);
+    }
+
+    public void predict(View view) {
+        float isDiabetic = doInference(
+                Float.parseFloat(binding.pregnant.getText().toString()),
+                Float.parseFloat(binding.glucose.getText().toString()),
+                Float.parseFloat(binding.bloodPressure.getText().toString()),
+                Float.parseFloat(binding.skinThickness.getText().toString()),
+                Float.parseFloat(binding.insulin.getText().toString()),
+                Float.parseFloat(binding.bmi.getText().toString()),
+                Float.parseFloat(binding.diabetesPedigreeFunction.getText().toString()),
+                Float.parseFloat(binding.age.getText().toString())
+        );
+
+        Toast.makeText(this, "Confidence: " + roundOfTwoDecimal(isDiabetic) + "%", Toast.LENGTH_SHORT).show();
+    }
+
+    public void bmiInfo(View view) {
+        Toast.makeText(this, "What is normal BMI?\n" +
+                "If your BMI is 18.5 to 24.9, it falls within the normal or Healthy Weight range. If your BMI is 25.0 to 29.9, it falls within the overweight range. If your BMI is 30.0 or higher, it falls within the obese range.", Toast.LENGTH_SHORT).show();
     }
 }

@@ -4,15 +4,184 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogisticRegressionActivity">
+    android:padding="20dp"
+    tools:context=".LogisticRegressionActivity"
+    tools:ignore="HardcodedText">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diabetes predictor"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="200dp" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:paddingEnd="10dp"
+        android:text="No of times pregnant:"
+        app:layout_constraintBottom_toBottomOf="@id/pregnant"
+        app:layout_constraintEnd_toStartOf="@id/border" />
+
+    <EditText
+        android:id="@+id/pregnant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="0.0-17.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/border"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        android:text="Glucose:"
+        android:hint="199"
+        app:layout_constraintBottom_toBottomOf="@+id/glucose"
+        app:layout_constraintEnd_toStartOf="@id/border" />
+
+    <EditText
+        android:id="@+id/glucose"
+        android:layout_width="0dp"
+        android:hint="0.0-199.0"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/border"
+        app:layout_constraintTop_toBottomOf="@id/pregnant" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        android:text="BloodPressure:"
+        app:layout_constraintBottom_toBottomOf="@+id/blood_pressure"
+        app:layout_constraintEnd_toStartOf="@+id/border" />
+
+    <EditText
+        android:id="@+id/blood_pressure"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="0.0-122.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/border"
+        app:layout_constraintTop_toBottomOf="@id/glucose" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        android:text="SkinThickness:"
+        app:layout_constraintBottom_toBottomOf="@+id/skin_thickness"
+        app:layout_constraintEnd_toStartOf="@+id/border" />
+
+    <EditText
+        android:id="@+id/skin_thickness"
+        android:layout_width="0dp"
+        android:hint="0.0-99.0"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/border"
+        app:layout_constraintTop_toBottomOf="@id/blood_pressure" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        android:text="Insulin:"
+        app:layout_constraintBottom_toBottomOf="@+id/insulin"
+        app:layout_constraintEnd_toStartOf="@+id/border" />
+
+    <EditText
+        android:id="@+id/insulin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="0.0-846.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/border"
+        app:layout_constraintTop_toBottomOf="@id/skin_thickness" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        android:text="BMI:"
+        android:onClick="bmiInfo"
+        app:layout_constraintBottom_toBottomOf="@+id/bmi"
+        app:layout_constraintEnd_toStartOf="@+id/border" />
+
+    <EditText
+        android:id="@+id/bmi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="0.0-67.10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/border"
+        app:layout_constraintTop_toBottomOf="@id/insulin" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        android:text="Diabetes pedigree function:"
+        app:layout_constraintBottom_toBottomOf="@+id/diabetes_pedigree_function"
+        app:layout_constraintEnd_toStartOf="@+id/border" />
+
+    <EditText
+        android:id="@+id/diabetes_pedigree_function"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="0.078-2.42"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/border"
+        app:layout_constraintTop_toBottomOf="@id/bmi" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        android:text="Age:"
+        app:layout_constraintBottom_toBottomOf="@+id/age"
+        app:layout_constraintEnd_toStartOf="@+id/border" />
+
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="21.0-81.0"
+        app:layout_constraintStart_toStartOf="@id/border"
+        app:layout_constraintTop_toBottomOf="@id/diabetes_pedigree_function" />
+
+
+    <Button
+        android:id="@+id/prediction_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Predict"
+        android:onClick="predict"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
